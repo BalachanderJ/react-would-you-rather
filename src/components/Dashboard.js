@@ -7,8 +7,17 @@ class Dashboard extends Component {
         return (
             <div>
                 <h3 className='center'>Your Timeline</h3>
+                <div>Answered Questions</div>
                 <ul className='dashboard-list'>
-                    {this.props.questionIds.map((id) => (
+                    {this.props.answeredQuestionIds.map((id) => (
+                        <li key={id}>
+                            {id}
+                        </li>
+                    ))}
+                </ul>
+                <div>Unanswered Questions</div>
+                <ul className='dashboard-list'>
+                    {this.props.unansweredQuestionIds.map((id) => (
                         <li key={id}>
                             {id}
                         </li>
@@ -19,9 +28,21 @@ class Dashboard extends Component {
     }
 }
 
-function mapStateToProps({questions}) {
+function mapStateToProps({questions, autheduser}) {
     return {
-        questionIds: Object.keys(questions)
+        answeredQuestionIds: Object.keys(questions)
+            .filter((question) => {
+                let optionOneSelected = questions[question].optionOne.votes.indexOf(autheduser) !== -1;
+                let optionTwoSelected = questions[question].optionTwo.votes.indexOf(autheduser) !== -1;
+                return optionOneSelected || optionTwoSelected
+            })
+            .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
+        unansweredQuestionIds: Object.keys(questions)
+            .filter((question) => {
+                let optionOneSelected = questions[question].optionOne.votes.indexOf(autheduser) === -1;
+                let optionTwoSelected = questions[question].optionTwo.votes.indexOf(autheduser) === -1;
+                return optionOneSelected && optionTwoSelected
+            })
             .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
     }
 }
