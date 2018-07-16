@@ -10,10 +10,20 @@ export function getInitialData () {
         _getUsers(),
         _getQuestions(),
     ]).then(([users, questions]) => {
-        console.log('questions', questions);
             return ({
                 users,
                 questions
+            })
+        }
+    )
+}
+
+export function getUsers () {
+    return Promise.all([
+        _getUsers()
+    ]).then(([users]) => {
+            return ({
+                users
             })
         }
     )

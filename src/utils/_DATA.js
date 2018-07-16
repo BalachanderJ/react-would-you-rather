@@ -166,7 +166,11 @@ export function _saveQuestion (question) {
                 }
             }
 
-            res(formattedQuestion)
+            // res(formattedQuestion, users)
+            res({
+                formattedQuestion: formattedQuestion,
+                users: users
+            })
         }, 1000)
     })
 }

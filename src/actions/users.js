@@ -1,3 +1,4 @@
+
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 
 export function receive_users(users) {
@@ -6,3 +7,4 @@ export function receive_users(users) {
         users
     }
 }
+

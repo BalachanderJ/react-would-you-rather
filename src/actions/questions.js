@@ -1,5 +1,7 @@
 import { saveQuestion } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
+import { receive_users } from './users'
+
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
@@ -27,8 +29,9 @@ export function handleAddQuestion(text1, text2) {
             optionOneText: text1,
             optionTwoText: text2,
             author: autheduser
-        }).then((question) => {
-            dispatch(addQuestion(question))
+        }).then((res) => {
+            dispatch(addQuestion(res.formattedQuestion))
+            dispatch(receive_users(res.users))
             dispatch(hideLoading())
         })
     }

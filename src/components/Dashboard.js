@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import { Route, Redirect } from 'react-router-dom';
+
 
 class Dashboard extends Component {
     render() {
-        console.log(this.props)
         return (
             <div>
+                {this.props.autheduser === null && <div>Hello World!</div>}
                 <h3 className='center'>Your Timeline</h3>
                 <div>Answered Questions</div>
                 <ul className='dashboard-list'>
@@ -31,6 +33,7 @@ class Dashboard extends Component {
 
 function mapStateToProps({questions, autheduser}) {
     return {
+        autheduser: autheduser,
         answeredQuestionIds: Object.keys(questions)
             .filter((question) => {
                 let optionOneSelected = questions[question].optionOne.votes.indexOf(autheduser) !== -1;

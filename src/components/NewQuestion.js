@@ -46,9 +46,8 @@ class NewQuestion extends Component {
 
         return (
             <div>
-                <h3 className='center'>New Question</h3>
+                <h3 className='center'>Would You Rather</h3>
                 <form className='new-tweet' onSubmit={this.handleSubmit}>
-                    <div>Would You rather</div>
                       <textarea
                           placeholder="Option 1"
                           value={text1}
@@ -56,7 +55,7 @@ class NewQuestion extends Component {
                           className='textarea'
                           maxLength={280}
                       />
-                    <div>OR</div>
+                    <div className="center margin-20">OR</div>
                     <textarea
                         placeholder="Option 2"
                         value={text2}
