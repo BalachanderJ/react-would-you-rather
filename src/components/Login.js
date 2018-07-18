@@ -36,7 +36,7 @@ class Login extends Component {
         const { toDashboard } = this.state
 
         if (toDashboard === true) {
-            this.props.history.push(`/`)
+            return <Redirect to='/' />
         }
 
         return (

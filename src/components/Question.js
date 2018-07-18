@@ -1,24 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/api'
-// import { handleAnswerQuestion } from '../actions/questions'
 import { Link, withRouter } from 'react-router-dom'
 import Avatar from 'react-avatar'
 
 
 class Question extends Component {
-    handleAnswer = (e) => {
-        e.preventDefault()
-
-        const { dispatch, question, autheduser } = this.props
-
-        // dispatch(handleAnswerQuestion({
-        //     id: tweet.id,
-        //     hasLiked: tweet.hasLiked,
-        //     autheduser
-        // }))
-    }
-
     render() {
         const { question } = this.props
 

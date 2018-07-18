@@ -5,11 +5,11 @@ import { receive_auth_user } from './autheduser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 
-const autheduser = 'tylermcginnis'
+// const autheduser = 'tylermcginnis'
 
 export function handleInitialData() {
     return (dispatch, getState) => {
-        // const { autheduser } = getState()
+        const { autheduser } = getState()
         dispatch(showLoading())
          getInitialData().then(({users, questions}) => {
                 dispatch(receive_users(users))
@@ -17,5 +17,15 @@ export function handleInitialData() {
                 dispatch(receive_auth_user(autheduser))
                 dispatch(hideLoading())
             })
+    }
+}
+
+export function getusers() {
+    return (dispatch, getState) => {
+        dispatch(showLoading())
+        getUsers().then(({users}) => {
+            dispatch(receive_users(users))
+            dispatch(hideLoading())
+        })
     }
 }
