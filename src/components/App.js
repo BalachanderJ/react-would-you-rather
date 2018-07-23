@@ -10,6 +10,8 @@ import LoadingBar from 'react-redux-loading'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Nav from './Nav'
 import PrivateRoute from './PrivateRoute'
+import NotFound from './NotFound';
+
 
 
 class App extends Component {
@@ -30,9 +32,10 @@ class App extends Component {
                             <Switch>
                                 <PrivateRoute path='/' exact component={Dashboard} loggedIn={loggedIn} />
                                 <PrivateRoute path='/leaderboard' exact component={LeaderBoard} loggedIn={loggedIn} />
-                                <PrivateRoute path='/new' exact component={NewQuestion} loggedIn={loggedIn} />
+                                <PrivateRoute path='/add' exact component={NewQuestion} loggedIn={loggedIn} />
                                 <PrivateRoute path='/question/:id' exact component={QuestionPage} loggedIn={loggedIn} />
                                 <Route path='/login' exact component={Login} />
+                                <Route component={NotFound} />
                             </Switch>
                         </div>
                     </div>
