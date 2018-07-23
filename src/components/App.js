@@ -25,7 +25,7 @@ class App extends Component {
                 <Fragment>
                     <LoadingBar />
                     <div className='container'>
-                        <Nav />
+                        <Nav></Nav>
                         <div>
                             <Switch>
                                 <PrivateRoute path='/' exact component={Dashboard} loggedIn={loggedIn} />

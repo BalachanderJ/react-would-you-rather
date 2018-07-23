@@ -54,13 +54,42 @@ a {
 .nav ul {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-around;
   text-decoration: none;
+}
+
+.nav ul {
+  background-color: #333;
+  overflow: hidden;
+}
+
+.welcome {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #f2f2f2;
+}
+
+.nav li a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #f2f2f2;
+}
+
+.nav li a.active {
+  background-color: #4CAF50;
+  color: white;
 }
 
 .nav li:first-child {
   padding-left: 0;
 }
+
 
 ul {
   padding-left: 0;
@@ -87,6 +116,62 @@ li {
   border: 1px solid #dad7d7;
   border-radius: 3px;
   cursor: pointer;
+}
+
+.login {
+  width: 98%;
+  padding: 10px;
+  display: flex;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.login-form {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-btn {
+  text-transform: uppercase;
+  margin: 35px auto;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.29);
+  cursor: pointer;
+  background: #fff;
+  font-size: 14px;
+  width: 250px;
+  position: relative;;
+}
+
+.styled-select {
+  margin-left: 10px;
+  height: 29px;
+  overflow: hidden;
+  width: 240px;
+}
+
+.styled-select select {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px; /* If you add too much padding here, the options won't show in IE */
+  width: 268px;
+}
+
+.styled-select.slate {
+  height: 34px;
+  width: 240px;
+}
+
+.styled-select.slate select {
+  border: 1px solid #ccc;
+  font-size: 16px;
+  height: 34px;
+  width: 268px;
 }
 
 .tweet-info {
@@ -164,4 +249,37 @@ li {
   margin-top: 10px;
   font-size: 20px;
   color: #C3392A;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
 }

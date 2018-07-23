@@ -20,6 +20,9 @@ class Nav extends Component {
     render() {
         return (
             <div>
+                <div>
+                    <h2>Would You Rather - React Application</h2>
+                </div>
                 <nav className='nav'>
                     <ul>
                         <li>
@@ -37,15 +40,16 @@ class Nav extends Component {
                                 LeaderBoard
                             </NavLink>
                         </li>
+                        {this.props.loggedIn &&
+                        <li>
+                            <a style={{cursor:'pointer'}} onClick={this.logout}>
+                                Logout
+                            </a>
+                        </li>
+                        }
                         <li>
                             {this.props.loggedIn &&
-                                <div>
-                                    <div>Welcome {this.props.autheduser}</div>
-                                    <a onClick={this.logout}>
-
-                                        Logout
-                                    </a>
-                                </div>
+                                <div className='welcome'>Welcome {this.props.autheduser}</div>
                             }
                         </li>
                     </ul>

@@ -40,22 +40,22 @@ class Login extends Component {
         }
 
         return (
-            <ul className='dashboard-list'>
-                    <div className='tweet'>
-                        <form onSubmit={this.handleSubmit}>
+            <div className='login-container'>
+                    <div className='login'>
+                        <form className='login-form' onSubmit={this.handleSubmit}>
                             <label>
-                                Select a User to login:
-                                <select value={this.state.value} onChange={this.handleChange}>
+                                <span>Select a User to login:</span>
+                                <select className='styled-select slate' value={this.state.value} onChange={this.handleChange}>
                                     <option value=''>Select a User</option>
                                     {Object.keys(users).map((user) => (
                                         <option key={users[user].id} value={users[user].id}>{users[user].name}</option>
                                     ))}
                                 </select>
                             </label>
-                            <input disabled={this.state.value === ''} type="submit" value="Login" />
+                            <input className='login-btn' disabled={this.state.value === ''} type="submit" value="Login" />
                         </form>
                     </div>
-            </ul>
+            </div>
         )
     }
 }

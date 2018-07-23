@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Avatar from 'react-avatar'
+import { handleAnswerQuestion } from '../actions/questions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+
 
 
 class QuestionPage extends Component {
@@ -18,6 +22,11 @@ class QuestionPage extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        const { dispatch } = this.props
+        dispatch(handleAnswerQuestion(this.props.autheduser, this.props.question.id, this.state.selectedOption));
+        this.setState(() => ({
+            answered: true
+        }))
     }
 
     render() {
@@ -31,8 +40,6 @@ class QuestionPage extends Component {
             author, optionOne, optionTwo
         } = question
 
-
-
         return (
             <div className='tweet'>
                 <Avatar name={author} />
@@ -41,9 +48,19 @@ class QuestionPage extends Component {
                         <div>
                             <span>{author} asks</span>
                             <div> Would You Rather </div>
-                            <div>{optionOne.text} - {question.optionOne.votes.length} votes</div>
+                            <div>
+                                {optionOne.text} - {question.optionOne.votes.length} votes
+                                {question.optionOne.votes.indexOf(this.props.autheduser) !== -1 &&
+                                    <FontAwesomeIcon icon={faCheckCircle} color='green' />
+                                }
+                            </div>
                             <div> OR </div>
-                            <div>{optionTwo.text} - {question.optionTwo.votes.length} votes</div>
+                            <div>
+                                {optionTwo.text} - {question.optionTwo.votes.length} votes
+                                {question.optionTwo.votes.indexOf(this.props.autheduser) !== -1 &&
+                                <FontAwesomeIcon icon={faCheckCircle} color='green'/>
+                                }
+                            </div>
                         </div>
                     }
                     {!this.state.answered &&
