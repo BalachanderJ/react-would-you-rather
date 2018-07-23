@@ -1,5 +1,7 @@
 # Would You Rather
 
+This is created as part of Udacity Nanodegree Program.
+
 This application allows users to answer polls created by other users, allowing an user to create a new poll and check leaderboard.
 
 ## TL;DR
