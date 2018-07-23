@@ -1,3 +1,16 @@
+# Would You Rather
+
+This application allows users to answer polls created by other users, allowing an user to create a new poll and check leaderboard.
+
+## TL;DR
+
+To get started developing right away:
+
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
