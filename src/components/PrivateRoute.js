@@ -14,6 +14,7 @@ class PrivateRoute extends Component {
                 )} />
             )
         } else if (localStorage.getItem('autheduser') !== null) {
+            localStorage.removeItem('autheduser');
             return (
                 <Route path={path} {...rest} render={props => (
                     <Redirect to={{
@@ -23,6 +24,7 @@ class PrivateRoute extends Component {
                 )} />
             )
         } else {
+            localStorage.removeItem('autheduser');
             return (
                 <Route path={path} {...rest} render={props => (
                     <Redirect to={{
