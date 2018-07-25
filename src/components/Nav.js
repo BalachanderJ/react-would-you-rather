@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import {handleSetAuthUser} from "../actions/autheduser";
 
 
@@ -15,6 +15,7 @@ class Nav extends Component {
     logout(event) {
         event.preventDefault();
         this.props.dispatch(handleSetAuthUser(null))
+        localStorage.removeItem('autheduser');
     }
 
     render() {
@@ -26,17 +27,17 @@ class Nav extends Component {
                 <nav className='nav'>
                     <ul>
                         <li>
-                            <NavLink to='/' exact activeClassName='active'>
+                            <NavLink to='/' exact>
                                 Home
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to='/add' activeClassName='active'>
+                            <NavLink to='/add'>
                                 New Question
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to='/leaderboard' activeClassName='active'>
+                            <NavLink to='/leaderboard'>
                                 LeaderBoard
                             </NavLink>
                         </li>
@@ -66,4 +67,4 @@ function mapStateToProps ({autheduser}) {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(Nav))
+export default connect(mapStateToProps)(Nav)

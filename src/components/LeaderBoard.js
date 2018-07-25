@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import Avatar from 'react-avatar'
 
 
@@ -43,4 +42,4 @@ function mapStateToProps ({users}) {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(LeaderBoard))
+export default connect(mapStateToProps)(LeaderBoard)

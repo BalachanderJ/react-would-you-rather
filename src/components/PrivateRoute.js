@@ -1,21 +1,46 @@
-import React from 'react';
-import { Route, Redirect, withRouter } from 'react-router-dom';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Route, Redirect } from 'react-router-dom'
 
-function PrivateRoute({ component: Component, ...rest }) {
-    const redirect = rest.location.pathname;
+class PrivateRoute extends Component {
+    render() {
+        const { component: Component, authenticated, path, ...rest } = this.props
 
-    return (
-        <Route {...rest} render={(props) => {
+        if (authenticated) {
+            //valid signed in user
             return (
-                rest.loggedIn
-                    ? <Component {...props} />
-                    : <Redirect to={{
+                <Route path={path} {...rest} render={props => (
+                    <Component {...rest} {...props} />
+                )} />
+            )
+        } else if (localStorage.getItem('autheduser') !== null) {
+            return (
+                <Route path={path} {...rest} render={props => (
+                    <Redirect to={{
+                            pathname: '/not-found',
+                            state: { from: props.location }
+                        }} />
+                )} />
+            )
+        } else {
+            return (
+                <Route path={path} {...rest} render={props => (
+                    <Redirect to={{
                         pathname: '/login',
-                        state: redirect
+                        state: { from: props.location }
                     }} />
-            )}
-        } />
-    );
+                )} />
+            )
+        }
+    }
 }
 
-export default withRouter(PrivateRoute);
+function mapStateToProps({ autheduser }) {
+    const authenticated = autheduser !== null
+
+    return {
+        authenticated
+    }
+}
+
+export default connect(mapStateToProps)(PrivateRoute)

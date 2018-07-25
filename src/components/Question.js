@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/api'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Avatar from 'react-avatar'
 
 
@@ -41,4 +41,4 @@ function mapStateToProps ({autheduser, questions}, { id }) {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(Question))
+export default connect(mapStateToProps)(Question)

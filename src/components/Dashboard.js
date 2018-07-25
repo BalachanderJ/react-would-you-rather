@@ -8,7 +8,6 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                {this.props.autheduser === null && <div>Hello World!</div>}
                 <h3 className='center'>Would You Rather</h3>
 
                 <Tabs>

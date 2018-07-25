@@ -29,6 +29,8 @@ class Login extends Component {
         this.setState(() => ({
             toDashboard: true
         }))
+        // update localStorage
+        localStorage.setItem('autheduser', this.state.value);
     }
 
     render() {

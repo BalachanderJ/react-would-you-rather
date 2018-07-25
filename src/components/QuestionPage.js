@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Avatar from 'react-avatar'
 import { handleAnswerQuestion } from '../actions/questions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -48,7 +48,7 @@ class QuestionPage extends Component {
                         <div>
                             <span>{author} asks</span>
                             <div> Would You Rather </div>
-                            <div style={{margin: '10px;', padding: '10px'}}>
+                            <div style={{margin: '10px', padding: '10px'}}>
                                 <div>{optionOne.text}  {question.optionOne.votes.indexOf(this.props.autheduser) !== -1 &&
                                         <FontAwesomeIcon icon={faCheckCircle} color='green' />
                                 } </div>
@@ -61,7 +61,7 @@ class QuestionPage extends Component {
 
                             </div>
                             <div> OR </div>
-                            <div style={{margin: '10px;', padding: '10px'}}>
+                            <div style={{margin: '10px', padding: '10px'}}>
                                 <div>{optionTwo.text} {question.optionTwo.votes.indexOf(this.props.autheduser) !== -1 &&
                                 <FontAwesomeIcon icon={faCheckCircle} color='green'/>
                                 }</div>
@@ -123,4 +123,4 @@ function mapStateToProps ({autheduser, questions}, props) {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(QuestionPage))
+export default connect(mapStateToProps)(QuestionPage)
