@@ -1,6 +1,6 @@
 # Would You Rather
 
-This is created as part of Udacity Nanodegree Program.
+This is created to understand my ReactJs understanding.
 
 This application allows users to answer polls created by other users, allowing an user to create a new poll and check leaderboard.
 
